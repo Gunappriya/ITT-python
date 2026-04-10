@@ -1,0 +1,11 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        # Step 1: Convert binary strings to integers (base 2)
+        # Step 2: Add the integers
+        sum_val = int(a, 2) + int(b, 2)
+        
+        # Step 3: Convert back to binary string and remove '0b'
+        return bin(sum_val)[2:]
+
+obj = Solution()
+print(obj.addBinary("1010", "1011"))  # Output: 10101
