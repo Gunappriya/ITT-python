@@ -1,0 +1,28 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        # Edge case: If numRows is 1 or string is too short, no zigzag happens
+        if numRows == 1 or numRows >= len(s):
+            return s
+        
+        # Initialize an array of empty strings for each row
+        rows = [""] * numRows
+        current_row = 0
+        step = 1  # 1 for moving down, -1 for moving up
+        
+        for char in s:
+            rows[current_row] += char
+            
+            # Change direction when hitting the first or last row
+            if current_row == 0:
+                step = 1
+            elif current_row == numRows - 1:
+                step = -1
+            
+            current_row += step
+            
+        # Combine all rows into a single string
+        return "".join(rows)
+
+# Example Usage:
+# Input: s = "PAYPALISHIRING", numRows = 3
+# Output: "PAHNAPLSIIGYIR"
