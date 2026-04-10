@@ -1,0 +1,15 @@
+class Solution:
+    # Rename 'removeDuplicates' to 'deleteDuplicates'
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # Your logic here...
+        if not head:
+            return head
+            
+        current = head
+        while current and current.next:
+            if current.val == current.next.val:
+                current.next = current.next.next
+            else:
+                current.next = current.next
+                current = current.next
+        return head
