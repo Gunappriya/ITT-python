@@ -1,0 +1,25 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        # Standard 32-bit signed integer limits
+        MIN_INT, MAX_INT = -2**31, 2**31 - 1
+        
+        # Track the sign and work with the absolute value
+        res = 0
+        is_negative = x < 0
+        num = abs(x)
+        
+        while num != 0:
+            # Extract the last digit
+            digit = num % 10
+            # Remove the last digit from the number
+            num //= 10
+            
+            # Check for potential overflow before updating result
+            if res > (MAX_INT - digit) // 10:
+                return 0
+            
+            res = (res * 10) + digit
+            
+        # Restore the sign
+        res = -res if is_negative else res
+        return res
